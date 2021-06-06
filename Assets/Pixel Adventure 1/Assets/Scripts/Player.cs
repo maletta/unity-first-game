@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     public float jumpForce;
     private float direction;
 
+    private bool isJumping;
+    private bool doubleJump;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +30,42 @@ public class Player : MonoBehaviour
     void Move()
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-        transform.position += movement * Time.deltaTime * this.moveSpeed;
+        transform.position += movement * Time.deltaTime * moveSpeed;
     }
 
     void Jump()
     {
         if (Input.GetButtonDown("Jump"))
         {
-            this.rb.AddForce(new Vector2(0f, this.jumpForce), ForceMode2D.Impulse);
+            if (!isJumping)
+            {
+                this.rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                doubleJump = true;
+            }
+            else
+            {
+                if (doubleJump)
+                {
+                    this.rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    doubleJump = false;
+                }
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 8)
+        {
+            isJumping = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            isJumping = true;
         }
     }
 }

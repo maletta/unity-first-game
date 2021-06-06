@@ -8611,7 +8611,7 @@ GameObject:
   - component: {fileID: 1404176387}
   - component: {fileID: 1404176386}
   - component: {fileID: 1404176385}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bricks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10499,6 +10499,10 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 4413080462336133058, guid: 011d54165c369924888d29535525e44f, type: 3}
+      propertyPath: m_GravityScale
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4413080462336133059, guid: 011d54165c369924888d29535525e44f, type: 3}
       propertyPath: m_Size.x
       value: 0.21
@@ -10510,6 +10514,14 @@ PrefabInstance:
     - target: {fileID: 4413080462336133060, guid: 011d54165c369924888d29535525e44f, type: 3}
       propertyPath: m_SortingOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413080462336133062, guid: 011d54165c369924888d29535525e44f, type: 3}
+      propertyPath: jumpForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413080462336133062, guid: 011d54165c369924888d29535525e44f, type: 3}
+      propertyPath: moveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4413080462336133063, guid: 011d54165c369924888d29535525e44f, type: 3}
       propertyPath: m_RootOrder
