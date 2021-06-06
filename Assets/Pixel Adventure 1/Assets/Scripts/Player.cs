@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     public int moveSpeed;
+    public float jumpForce;
     private float direction;
 
     // Start is called before the first frame update
@@ -17,8 +18,23 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(direction * moveSpeed, rb.velocity.y);
-        
+        //direction = Input.GetAxis("Horizontal");
+        //rb.velocity = new Vector2(direction * moveSpeed, rb.velocity.y);
+        Move();
+        Jump();
+    }
+
+    void Move()
+    {
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+        transform.position += movement * Time.deltaTime * this.moveSpeed;
+    }
+
+    void Jump()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            this.rb.AddForce(new Vector2(0f, this.jumpForce), ForceMode2D.Impulse);
+        }
     }
 }
